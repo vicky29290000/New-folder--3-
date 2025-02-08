@@ -1,0 +1,17 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "mongodb"  // Set the provider to MongoDB
+  url      = env("DATABASE_URL")  // Use the environment variable DATABASE_URL
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Example of a simple User model:
+model User {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String @unique
+  name  String?
+}
